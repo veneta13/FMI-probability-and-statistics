@@ -48,7 +48,50 @@ prob.student(100000)
 
 
 # Task 5
+sim.birthday <- function() {
+  x <- sample(1:365, 25, replace=T)
+  length(unique(x)) < 25
+}
+prob.birthday <- function(times) {
+  zad5 <-replicate(times, sim.birthday())
+  sum(zad5)/length(zad5)
+}
+prob.birthday(100000)
+# solution: ~0.57
 
+
+# Task 6
+sim.present <- function() {
+  presents <- sample(1:20, 20, replace=F)
+  count <- 0
+  for (index in 1:20) {
+    if (index == presents[index]) {
+      count = count + 1
+    }
+  }
+  count > 0
+}
+prob.present <- function(times) {
+  zad6 <-replicate(times, sim.present())
+  sum(zad6)/length(zad6)
+}
+prob.present(100000)
+# solution: ~0.63
+
+
+# Task 7
+sim.ants <- function() {
+  ant1 <- sample(c("A", "B"), 1)
+  ant2 <- sample(c("A", "C"), 1)
+  ant3 <- sample(c("B", "C"), 1)
+  length(unique(c(ant1, ant2, ant3))) == 3
+}
+prob.ants <- function(times) {
+  zad7 <-replicate(times, sim.ants())
+  sum(zad7)/length(zad7)
+}
+prob.ants(100000)
+# solution: ~0.25
 
 # Task 27
 u <- runif(500, 2, 3)
