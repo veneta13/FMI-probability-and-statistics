@@ -1,0 +1,187 @@
+---
+title: "ВС практикум: Домашно задание 2"
+author: "Венета Кирева, ФН 82184"
+date: "`r format(Sys.time(), '%d.%m.%Y')`"
+output:
+  word_document: default
+  html_document:
+    theme: readable
+    df_print: paged
+    toc: false
+    toc_float: true
+    number_sections: false
+  pdf_document: default
+---
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+<br>
+
+При решаване на задачите може да използвате вградени функции и команди, които **не** изискват зареждане на пакет или извикване от типа `packageName::fun()`.
+
+<br>
+
+### Задача 1
+
+Генерирайте данни $\, (x_i,y_i), \; i=1, \ldots, n, \,$ където:
+
+$\;\;$ $y_i = x_i + \varepsilon_i,$
+
+$\;\;$ $x_i$ са случайни числа от нормално разпределение с $\,\mu=7\,$ и $\,\sigma=1,$
+
+$\;\;$ $\varepsilon_i$ са случайни числа от нормално разпределение с $\,\mu=0.2\,$ и $\,\sigma=1.$
+
+Проверете хипотезата за равенство на средните срещу двустранна алтернатива, като използвате:
+
+$\;\;$ **а)** $\,$ тест за две независими извадки,
+
+$\;\;$ **б)** $\,$ тест за двойки наблюдения.
+
+Повторете $10000$ пъти за $n=30,50,100,200,500$. 
+
+Колко често заключението на всеки от тестовете е вярно? 
+Представете чрез подходяща графика честотата на вярно заключение в зависимост от $n$ (на една фигура за двата теста).
+
+
+
+```{r}
+
+zad1_gen_num <- function(n) {
+  xs <- rnorm(n, mean=7, sd=1)
+  es <- rnorm(n, mean=0.2, sd=1)
+  ys <- xs + es
+  c(xs, ys)
+}
+
+
+zad1_check <- function(n, paired=F) {
+  a <- zad1_gen_num(n)
+  xs <- a[1:n]
+  ys <- a[(n+1):(2*n)]
+  t.test(xs, ys, paired=paired)$p.value
+}
+
+
+zad1_replicate <- function(n, paired=F) {
+  result <- replicate(10000, zad1_check(n, paired=paired))
+  sum(result<=0.05)/length(result)
+}
+
+
+zad1_plot <- function() {
+  ns <- c(30, 50, 100, 200, 500)
+  val_indpen <- c()
+  val_paired <- c()
+  
+  for (n in ns) {
+    val_indpen <- append(val_indpen, zad1_replicate(n))
+    val_paired <- append(val_paired, zad1_replicate(n, paired=T))
+  }
+  
+  val_indpen <- val_indpen * 100
+  val_paired <- val_paired * 100
+  
+  plot(ns,
+       val_indpen,
+       type="b",
+       pch=1,
+       col="red",
+       xlab="n",
+       ylab="% вярно заключение",
+       xlim=c(-10, 525),
+       ylim=c(-10, 100)
+  )
+  
+  lines(ns,
+        val_paired,
+        pch=2,
+        col="blue",
+        type="b",
+        lty=2
+  )
+  
+  legend("bottomright",
+         legend=c("Независими извадки", "Двойки наблюдения"),
+         col=c("red", "blue"),
+         cex=0.8,
+         lty=1:2
+  )
+
+  text(ns,
+       val_indpen,
+       col="red",
+       labels=sprintf("%.1f", val_indpen),
+       pos=c(2, 1, 1, 3, 1)
+  )
+  
+  text(ns,
+       val_paired,
+       col="blue",
+       labels=sprintf("%.1f", val_paired),
+       pos=c(4, 2, 3, 3, 1)
+  )
+}
+
+
+zad1_plot()
+
+```
+
+
+### Задача 2
+
+Симулирайте $n$ хвърляния на небалансиран зар като изберете вероятностите за падане на всяка от страните (поне една от вероятностите трябва да е различна от останалите). Използвайте генерираните данни, за да проверите хипотезата, че всяка от страните се пада с една и съща вероятност. Повторете $10000$ пъти. 
+
+Колко често заключението на теста е вярно? Представете чрез подходяща графика честотата на вярно заключение в зависимост от $n$. Изберете няколко стойности на $n$ (например $5$--$6$ стойности), така че да се илюстрира добре динамиката на честотата на вярно заключение и за най-голямата от избраните стойности на $n$ честотата на вярно заключение да е поне $98\%$.
+
+```{r}
+
+zad2_gen_num <- function(n) {
+  x <- c(1:6)
+  p <- c(1/6, 1/6, 1/6, 1/3, 1/12, 1/12)
+  result <- table(factor(sample(x, n, replace=T, prob=p), levels=x))
+  as.numeric(result)
+}
+
+
+zad2_test_chisq <- function(n) {
+  expected <- c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)
+  observed <- zad2_gen_num(n)
+  chisq.test(x=observed, p=expected)$p.value <= 0.05
+}
+
+
+zad2_plot <- function() {
+  ns <- c(5, 10, 30, 50, 70, 100, 150)
+  val <- c()
+  
+  for (n in ns) {
+    res <- replicate(10000, zad2_test_chisq(n))
+    val <- append(val, sum(res)/length(res))
+  }
+  
+  val <- val * 100
+  
+  plot(ns,
+       val,
+       type="b",
+       pch=8,
+       col="red",
+       xlab="n",
+       ylab="% вярно заключение",
+       xlim=c(0, 150),
+       ylim=c(0, 100)
+  )
+  
+  text(ns,
+       val,
+       labels=sprintf("%.1f", val),
+       pos=c(4, 4, 4, 2, 2, 1, 1, 1)
+  )
+}
+
+
+zad2_plot()
+
+```
