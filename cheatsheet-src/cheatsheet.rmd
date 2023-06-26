@@ -275,3 +275,76 @@ qnorm(p, mean, standard_deviation)
 rnorm(number_observations, mean, standard_deviation)
 ```
 
+## Данни. Таблици и графики
+
+### Данни от тест
+```{r}
+exam <- read.table("../datasets/examAB.txt", header=T)
+exam
+
+variant <- exam$variant
+
+class(variant)
+
+table(variant)
+table(variant) / length(variant)
+sort(table(variant) / length(variant), decreasing=T)
+
+barplot(table(variant))
+barplot(table(variant) / length(variant))
+barplot(sort(table(variant) / length(variant), decreasing=T))
+pie(table(variant))
+
+```
+
+### Други числови данни
+```{r}
+wait <- c(2,3,3,5,5,2,7,10,4,3,1,7,11,10,5,6,3,8,5,12,5,3,8,5,7)
+
+table(wait)
+
+wait_grouped <- cut(wait, breaks=seq(0,12,2))
+table(wait_grouped)
+table(wait_grouped)/length(wait)
+
+barplot(table(wait_grouped))
+
+hist(wait)
+hist(wait, probability=T)
+hist(wait, breaks=seq(0, 12, 3))
+
+# хистограма с честотен полигон
+h <- hist(wait, probability=T)
+lines(
+    x=c(
+        min(h$breaks),
+        h$mids,
+        max(h$breaks)
+    ),
+    y=c(
+      0,
+      h$density,
+      0
+    ),
+    type="l",
+    lwd=2,
+    col="darkorange1"
+)
+
+stripchart(
+    wait,
+    method="stack",
+    pch=20,
+    cex=1.5
+)
+
+# диаграма клон с листа (stem-and-leaf plot)
+# интервали: [0, 4], (4, 9], (9, 12]
+stem(wait)
+
+# увеличаване на броя подинтервали
+# интервали: [0, 1] (1, 3] (3, 5], (5, 7], (7, 9], (9, 11] (11, 13]
+stem(wait, scale=2)
+
+
+```
