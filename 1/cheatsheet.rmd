@@ -1,0 +1,65 @@
+---
+title: "Cheatsheet"
+output: html_notebook
+---
+
+## Случайни експерименти
+
+**Избор на случайни елементи от вектор с връщане:**
+```{r}
+    sample(x=1:5, size=3, replace=T)
+```
+
+**Избор на случайни елементи от вектор без връщане:**
+```{r}
+    sample(x=1:5, size=3, replace=F)
+```
+
+**Генериране на пермутация:**
+```{r}
+    x <- 1:5
+    sample(x, length(x), replace=F)
+```
+**Намиране на честота на събитие (приблизителна вероятност):**
+
+В отдел на фирма работят 20 човека. За Коледа те решават да си разменят
+подаръци. В кутия слагат 20 листчета, на всяко от които има едно име. Всеки тегли листче
+(без да го връща) и подарява на този, чието име е изтеглил. Каква е вероятността поне
+един да изтегли своето име?
+
+```{r}
+sim <- function(num_people) {
+    x <- sample( 1:num_people, num_people, replace=F ) # permute
+    d <- x - 1:num_people # diff between personal and received number
+    any(d==0) # check if for any there is no diff between the two numbers
+}
+
+prob <- function(times, num_people) {
+    result <- replicate(times, sim(num_people))
+    sum(result)/length(result)
+}
+
+prob(100000, 20)
+```
+**Условна вероятност:**
+
+Имаме 3 карти: първата е бяла от двете страни, втората е черна от двете
+страни, а третата е бяла от едната и черна от другата страна. Всяка карта е поставена в
+затворена кутия. Избираме произволна кутия, отваряме я и виждаме, че горната страна
+на картата в нея е бяла. Каква е вероятността другата страна на картата също да е бяла?
+
+```{r}
+sim <- function() {
+    cards <- sample(c("bb", "ww", "bw"), 1)
+    side <- sample(1:2, 1 )
+    up <- substr(cards, start=side, stop=side)
+    c(up, cards)
+}
+
+prob <- function(times) {
+    result <- replicate(times, sim())
+    sum(result[2,]=="ww") / sum(result[1,]=="w")
+}
+
+prob(100000)
+```
