@@ -63,3 +63,215 @@ prob <- function(times) {
 
 prob(100000)
 ```
+## Случайни величини
+
+### Дискретни случайни величини
+
+**Бернулиево разпределение**
+
+X - *брой успехи*
+
+```{r}
+successes <- 10
+tries <- 20
+success_probability <- 0.5
+number_observations <- 10
+
+# P(X = successes)
+dbinom(successes, tries, success_probability)
+
+# P(X <= successes)
+pbinom(successes, tries, success_probability)
+
+# generate number_observations numbers from the Binomial distribution
+rbinom(number_observations, tries, success_probability)
+```
+
+**Геометрично разпределение**
+
+X - *брой опити до успех*
+
+```{r}
+tries <- 2
+success_probability <- 0.5
+number_observations <- 10
+
+# P(X = tries)
+dgeom(tries - 1, success_probability)
+
+# P(X <= tries)
+pgeom(tries - 1, success_probability)
+
+# generate number_observations numbers from the Geometric distribution
+rgeom(number_observations, success_probability) + 1
+```
+
+X - *брой неуспехи преди първи успех*
+
+```{r}
+tries <- 2
+success_probability <- 0.5
+number_observations <- 10
+
+# P(X = tries)
+dgeom(tries, success_probability)
+
+# P(X <= tries)
+pgeom(tries, success_probability)
+
+# generate number_observations numbers from the Geometric distribution
+rgeom(number_observations, success_probability)
+```
+
+**Отрицателно биномно разпределение**
+
+X - *брой опити преди r-ти успех включително*
+
+```{r}
+successes <- 10
+tries <- 20
+success_probability <- 0.5
+number_observations <- 10
+
+# P(X = tries)
+dnbinom(tries - successes, successes, success_probability)
+
+# P(X <= tries)
+pnbinom(tries - successes, successes, success_probability)
+
+# generate number_observations numbers from the Negative Binomial distribution
+rnbinom(number_observations, successes, success_probability) + successes
+```
+
+X - *брой неуспехи преди r-ти успех*
+
+```{r}
+successes <- 10
+failures <- 10
+success_probability <- 0.5
+number_observations <- 10
+
+# P(X = failures)
+dnbinom(failures, successes, success_probability)
+
+# P(X <= tries)
+pnbinom(failures, successes, success_probability)
+
+# generate number_observations numbers from the Negative Binomial distribution
+rnbinom(number_observations, successes, success_probability)
+```
+
+**Хипергеометрично резпределение**
+
+N - *общ брой топки*
+
+M - *брой бели топки*
+
+X - *брой извадени бели топки (при извадени L без връщане)*
+
+```{r}
+chosen_white <- 5
+white <- 10
+all <- 20
+tries <- 10
+number_observations <- 10
+
+# P(X = chosen_white)
+dhyper(chosen_white, white, all - white, tries)
+
+# P(X <= chosen_white)
+phyper(chosen_white, white, all - white, tries)
+
+# generate number_observations numbers from the Hypergeometric distribution
+rhyper(number_observations, white, all - white, tries)
+```
+
+**Поасоново разпределение**
+
+X - **брой случвания на събитието**
+
+```{r}
+occurences <- 1
+rate <- 0.6
+number_observations <- 10
+
+# P(X = occurences)
+dpois(occurences, rate)
+
+# P(X <= occurences)
+ppois(occurences, rate)
+
+# generate number_observations numbers from the Poisson distribution
+rpois(number_observations, rate)
+```
+
+### Непрекъснати случайни величини
+
+**Равномерно разпределение**
+
+
+```{r}
+min <- 0
+max <- 10
+x <- 4
+p <- 0.5
+number_observations <- 5
+
+# f(x)
+dunif(x, min, max)
+
+# P(X <= x)
+punif(x, min, max)
+
+# Q(x)
+qunif(p, min, max)
+
+# generate number_observations numbers from the Uniform distribution
+runif(number_observations, min, max)
+```
+**Експоненциално разпределение**
+
+
+В теорията на вероятностите и статистиката, експоненциалното разпределение разпределение на времето между събитията в процес на точка на Поасон, т.е. процес, при който **събитията се случват непрекъснато и независимо** с постоянна средна скорост.
+
+```{r}
+rate <- 0.5
+x <- 4
+p <- 0.5
+number_observations <- 5
+
+# f(x)
+dexp(x, rate)
+
+# P(X <= x)
+pexp(x, rate)
+
+# Q(x)
+qexp(p, rate)
+
+# generate number_observations numbers from the Exponential distribution
+rexp(number_observations, rate)
+```
+
+**Нормално разпределение**
+
+```{r}
+mean <- 5
+standard_deviation <- 2
+x <- 6
+p <- 0.5
+number_observations <- 5
+
+# f(x)
+dnorm(x, mean, standard_deviation)
+
+# P(X <= x)
+pnorm(x, mean, standard_deviation)
+
+# Q(x)
+qnorm(p, mean, standard_deviation)
+
+# generate number_observations numbers from the Normal distribution
+rnorm(number_observations, mean, standard_deviation)
+```
+

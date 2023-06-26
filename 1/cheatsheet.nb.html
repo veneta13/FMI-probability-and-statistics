@@ -1760,8 +1760,8 @@ display: none;
 <!-- rnb-source-begin eyJkYXRhIjoiICAgIHNhbXBsZSh4PTE6NSwgc2l6ZT0zLCByZXBsYWNlPVQpIn0= -->
 <pre class="r"><code>    sample(x=1:5, size=3, replace=T)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIgMiA0XG4ifQ== -->
-<pre><code>[1] 2 2 4</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIgMSAxXG4ifQ== -->
+<pre><code>[1] 2 1 1</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1772,8 +1772,8 @@ display: none;
 <!-- rnb-source-begin eyJkYXRhIjoiICAgIHNhbXBsZSh4PTE6NSwgc2l6ZT0zLCByZXBsYWNlPUYpIn0= -->
 <pre class="r"><code>    sample(x=1:5, size=3, replace=F)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQgMyAxXG4ifQ== -->
-<pre><code>[1] 4 3 1</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMgMiAxXG4ifQ== -->
+<pre><code>[1] 3 2 1</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1784,8 +1784,8 @@ display: none;
 <pre class="r"><code>    x &lt;- 1:5
     sample(x, length(x), replace=F)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDUgMiAzIDEgNFxuIn0= -->
-<pre><code>[1] 5 2 3 1 4</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEgMiA0IDUgM1xuIn0= -->
+<pre><code>[1] 1 2 4 5 3</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1812,8 +1812,8 @@ prob &lt;- function(times, num_people) {
 
 prob(100000, 20)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjMzOFxuIn0= -->
-<pre><code>[1] 0.6338</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjM2MVxuIn0= -->
+<pre><code>[1] 0.6361</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1840,13 +1840,367 @@ prob &lt;- function(times) {
 
 prob(100000)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjY0MzI2OFxuIn0= -->
-<pre><code>[1] 0.6643268</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjY5MTQyNFxuIn0= -->
+<pre><code>[1] 0.6691424</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="случайни-величини" class="section level2">
+<h2>Случайни величини</h2>
+<div id="дискретни-случайни-величини" class="section level3">
+<h3>Дискретни случайни величини</h3>
+<p><strong>Бернулиево разпределение</strong></p>
+<p>X - <em>брой успехи</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInN1Y2Nlc3NlcyA8LSAxMCIsInRyaWVzIDwtIDIwIiwic3VjY2Vzc19wcm9iYWJpbGl0eSA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwIiwiIiwiIyBQKFggPSBzdWNjZXNzZXMpIiwiZGJpbm9tKHN1Y2Nlc3NlcywgdHJpZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpIl19 -->
+<pre class="r"><code>successes &lt;- 10
+tries &lt;- 20
+success_probability &lt;- 0.5
+number_observations &lt;- 10
+
+# P(X = successes)
+dbinom(successes, tries, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMTc2MTk3MVxuIn0= -->
+<pre><code>[1] 0.1761971</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHN1Y2Nlc3NlcykiLCJwYmlub20oc3VjY2Vzc2VzLCB0cmllcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code># P(X &lt;= successes)
+pbinom(successes, tries, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTg4MDk4NVxuIn0= -->
+<pre><code>[1] 0.5880985</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEJpbm9taWFsIGRpc3RyaWJ1dGlvbiIsInJiaW5vbShudW1iZXJfb2JzZXJ2YXRpb25zLCB0cmllcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code># generate number_observations numbers from the Binomial distribution
+rbinom(number_observations, tries, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAxMyAxNiAxMCAxMiAxMyAgOCAxNSAgOSAxMCAgOVxuIn0= -->
+<pre><code> [1] 13 16 10 12 13  8 15  9 10  9</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Геометрично разпределение</strong></p>
+<p>X - <em>брой опити до успех</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInRyaWVzIDwtIDIiLCJzdWNjZXNzX3Byb2JhYmlsaXR5IDwtIDAuNSIsIm51bWJlcl9vYnNlcnZhdGlvbnMgPC0gMTAiLCIiLCIjIFAoWCA9IHRyaWVzKSIsImRnZW9tKHRyaWVzIC0gMSwgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code>tries &lt;- 2
+success_probability &lt;- 0.5
+number_observations &lt;- 10
+
+# P(X = tries)
+dgeom(tries - 1, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMjVcbiJ9 -->
+<pre><code>[1] 0.25</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHRyaWVzKSIsInBnZW9tKHRyaWVzIC0gMSwgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code># P(X &lt;= tries)
+pgeom(tries - 1, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzVcbiJ9 -->
+<pre><code>[1] 0.75</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEdlb21ldHJpYyBkaXN0cmlidXRpb24iLCJyZ2VvbShudW1iZXJfb2JzZXJ2YXRpb25zLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSArIDEiXX0= -->
+<pre class="r"><code># generate number_observations numbers from the Geometric distribution
+rgeom(number_observations, success_probability) + 1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAzIDEgMSA0IDUgMSAxIDEgMiAxXG4ifQ== -->
+<pre><code> [1] 3 1 1 4 5 1 1 1 2 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>X - <em>брой неуспехи преди първи успех</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInRyaWVzIDwtIDIiLCJzdWNjZXNzX3Byb2JhYmlsaXR5IDwtIDAuNSIsIm51bWJlcl9vYnNlcnZhdGlvbnMgPC0gMTAiLCIiLCIjIFAoWCA9IHRyaWVzKSIsImRnZW9tKHRyaWVzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSJdfQ== -->
+<pre class="r"><code>tries &lt;- 2
+success_probability &lt;- 0.5
+number_observations &lt;- 10
+
+# P(X = tries)
+dgeom(tries, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMTI1XG4ifQ== -->
+<pre><code>[1] 0.125</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHRyaWVzKSIsInBnZW9tKHRyaWVzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSJdfQ== -->
+<pre class="r"><code># P(X &lt;= tries)
+pgeom(tries, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuODc1XG4ifQ== -->
+<pre><code>[1] 0.875</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEdlb21ldHJpYyBkaXN0cmlidXRpb24iLCJyZ2VvbShudW1iZXJfb2JzZXJ2YXRpb25zLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSJdfQ== -->
+<pre class="r"><code># generate number_observations numbers from the Geometric distribution
+rgeom(number_observations, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwIDAgMiAwIDMgMSAyIDMgMCAxXG4ifQ== -->
+<pre><code> [1] 0 0 2 0 3 1 2 3 0 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Отрицателно биномно разпределение</strong></p>
+<p>X - <em>брой опити преди r-ти успех включително</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInN1Y2Nlc3NlcyA8LSAxMCIsInRyaWVzIDwtIDIwIiwic3VjY2Vzc19wcm9iYWJpbGl0eSA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwIiwiIiwiIyBQKFggPSB0cmllcykiLCJkbmJpbm9tKHRyaWVzIC0gc3VjY2Vzc2VzLCBzdWNjZXNzZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpIl19 -->
+<pre class="r"><code>successes &lt;- 10
+tries &lt;- 20
+success_probability &lt;- 0.5
+number_observations &lt;- 10
+
+# P(X = tries)
+dnbinom(tries - successes, successes, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDg4MDk4NTNcbiJ9 -->
+<pre><code>[1] 0.08809853</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHRyaWVzKSIsInBuYmlub20odHJpZXMgLSBzdWNjZXNzZXMsIHN1Y2Nlc3Nlcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code># P(X &lt;= tries)
+pnbinom(tries - successes, successes, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTg4MDk4NVxuIn0= -->
+<pre><code>[1] 0.5880985</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIE5lZ2F0aXZlIEJpbm9taWFsIGRpc3RyaWJ1dGlvbiIsInJuYmlub20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSArIHN1Y2Nlc3NlcyJdfQ== -->
+<pre class="r"><code># generate number_observations numbers from the Negative Binomial distribution
+rnbinom(number_observations, successes, success_probability) + successes</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAyNSAxNyAxOCAxMiAxOSAxNSAyMSAzMSAyMyAyM1xuIn0= -->
+<pre><code> [1] 25 17 18 12 19 15 21 31 23 23</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>X - <em>брой неуспехи преди r-ти успех</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInN1Y2Nlc3NlcyA8LSAxMCIsImZhaWx1cmVzIDwtIDEwIiwic3VjY2Vzc19wcm9iYWJpbGl0eSA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwIiwiIiwiIyBQKFggPSBmYWlsdXJlcykiLCJkbmJpbm9tKGZhaWx1cmVzLCBzdWNjZXNzZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpIl19 -->
+<pre class="r"><code>successes &lt;- 10
+failures &lt;- 10
+success_probability &lt;- 0.5
+number_observations &lt;- 10
+
+# P(X = failures)
+dnbinom(failures, successes, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDg4MDk4NTNcbiJ9 -->
+<pre><code>[1] 0.08809853</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHRyaWVzKSIsInBuYmlub20oZmFpbHVyZXMsIHN1Y2Nlc3Nlcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkiXX0= -->
+<pre class="r"><code># P(X &lt;= tries)
+pnbinom(failures, successes, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNTg4MDk4NVxuIn0= -->
+<pre><code>[1] 0.5880985</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIE5lZ2F0aXZlIEJpbm9taWFsIGRpc3RyaWJ1dGlvbiIsInJuYmlub20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSJdfQ== -->
+<pre class="r"><code># generate number_observations numbers from the Negative Binomial distribution
+rnbinom(number_observations, successes, success_probability)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAxMSAxNSAgNSAxNSAxMCAxMyAgOCAxMSAxMiAxNFxuIn0= -->
+<pre><code> [1] 11 15  5 15 10 13  8 11 12 14</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Хипергеометрично резпределение</strong></p>
+<p>N - <em>общ брой топки</em></p>
+<p>M - <em>брой бели топки</em></p>
+<p>X - <em>брой извадени бели топки (при извадени L без
+връщане)</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbImNob3Nlbl93aGl0ZSA8LSA1Iiwid2hpdGUgPC0gMTAiLCJhbGwgPC0gMjAiLCJ0cmllcyA8LSAxMCIsIm51bWJlcl9vYnNlcnZhdGlvbnMgPC0gMTAiLCIiLCIjIFAoWCA9IGNob3Nlbl93aGl0ZSkiLCJkaHlwZXIoY2hvc2VuX3doaXRlLCB3aGl0ZSwgYWxsIC0gd2hpdGUsIHRyaWVzKSJdfQ== -->
+<pre class="r"><code>chosen_white &lt;- 5
+white &lt;- 10
+all &lt;- 20
+tries &lt;- 10
+number_observations &lt;- 10
+
+# P(X = chosen_white)
+dhyper(chosen_white, white, all - white, tries)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMzQzNzE4MlxuIn0= -->
+<pre><code>[1] 0.3437182</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IGNob3Nlbl93aGl0ZSkiLCJwaHlwZXIoY2hvc2VuX3doaXRlLCB3aGl0ZSwgYWxsIC0gd2hpdGUsIHRyaWVzKSJdfQ== -->
+<pre class="r"><code># P(X &lt;= chosen_white)
+phyper(chosen_white, white, all - white, tries)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjcxODU5MVxuIn0= -->
+<pre><code>[1] 0.6718591</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEh5cGVyZ2VvbWV0cmljIGRpc3RyaWJ1dGlvbiIsInJoeXBlcihudW1iZXJfb2JzZXJ2YXRpb25zLCB3aGl0ZSwgYWxsIC0gd2hpdGUsIHRyaWVzKSJdfQ== -->
+<pre class="r"><code># generate number_observations numbers from the Hypergeometric distribution
+rhyper(number_observations, white, all - white, tries)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSA2IDQgMyA1IDYgMyA2IDcgNSA0XG4ifQ== -->
+<pre><code> [1] 6 4 3 5 6 3 6 7 5 4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Поасоново разпределение</strong></p>
+<p>X - <strong>брой случвания на събитието</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIm9jY3VyZW5jZXMgPC0gMSIsInJhdGUgPC0gMC42IiwibnVtYmVyX29ic2VydmF0aW9ucyA8LSAxMCIsIiIsIiMgUChYID0gb2NjdXJlbmNlcykiLCJkcG9pcyhvY2N1cmVuY2VzLCByYXRlKSJdfQ== -->
+<pre class="r"><code>occurences &lt;- 1
+rate &lt;- 0.6
+number_observations &lt;- 10
+
+# P(X = occurences)
+dpois(occurences, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMzI5Mjg3XG4ifQ== -->
+<pre><code>[1] 0.329287</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IG9jY3VyZW5jZXMpIiwicHBvaXMob2NjdXJlbmNlcywgcmF0ZSkiXX0= -->
+<pre class="r"><code># P(X &lt;= occurences)
+ppois(occurences, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuODc4MDk4NlxuIn0= -->
+<pre><code>[1] 0.8780986</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIFBvaXNzb24gZGlzdHJpYnV0aW9uIiwicnBvaXMobnVtYmVyX29ic2VydmF0aW9ucywgcmF0ZSkiXX0= -->
+<pre class="r"><code># generate number_observations numbers from the Poisson distribution
+rpois(number_observations, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwIDAgMSAwIDAgMSAwIDEgMCAwXG4ifQ== -->
+<pre><code> [1] 0 0 1 0 0 1 0 1 0 0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="непрекъснати-случайни-величини" class="section level3">
+<h3>Непрекъснати случайни величини</h3>
+<p><strong>Равномерно разпределение</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIm1pbiA8LSAwIiwibWF4IDwtIDEwIiwieCA8LSA0IiwicCA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDUiLCIiLCIjIGYoeCkiLCJkdW5pZih4LCBtaW4sIG1heCkiXX0= -->
+<pre class="r"><code>min &lt;- 0
+max &lt;- 10
+x &lt;- 4
+p &lt;- 0.5
+number_observations &lt;- 5
+
+# f(x)
+dunif(x, min, max)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMVxuIn0= -->
+<pre><code>[1] 0.1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHgpIiwicHVuaWYoeCwgbWluLCBtYXgpIl19 -->
+<pre class="r"><code># P(X &lt;= x)
+punif(x, min, max)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNFxuIn0= -->
+<pre><code>[1] 0.4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUSh4KSIsInF1bmlmKHAsIG1pbiwgbWF4KSJdfQ== -->
+<pre class="r"><code># Q(x)
+qunif(p, min, max)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDVcbiJ9 -->
+<pre><code>[1] 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIFVuaWZvcm0gZGlzdHJpYnV0aW9uIiwicnVuaWYobnVtYmVyX29ic2VydmF0aW9ucywgbWluLCBtYXgpIl19 -->
+<pre class="r"><code># generate number_observations numbers from the Uniform distribution
+runif(number_observations, min, max)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIuMjYyNjAyIDMuMTQ3MDMxIDIuNDQyMjQ4IDguNjM0NzIxIDEuMDIwMzU0XG4ifQ== -->
+<pre><code>[1] 2.262602 3.147031 2.442248 8.634721 1.020354</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Експоненциално разпределение</strong></p>
+<p>В теорията на вероятностите и статистиката, експоненциалното
+разпределение разпределение на времето между събитията в процес на точка
+на Поасон, т.е. процес, при който <strong>събитията се случват
+непрекъснато и независимо</strong> с постоянна средна скорост.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInJhdGUgPC0gMC41IiwieCA8LSA0IiwicCA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDUiLCIiLCIjIGYoeCkiLCJkZXhwKHgsIHJhdGUpIl19 -->
+<pre class="r"><code>rate &lt;- 0.5
+x &lt;- 4
+p &lt;- 0.5
+number_observations &lt;- 5
+
+# f(x)
+dexp(x, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDY3NjY3NjRcbiJ9 -->
+<pre><code>[1] 0.06766764</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHgpIiwicGV4cCh4LCByYXRlKSJdfQ== -->
+<pre class="r"><code># P(X &lt;= x)
+pexp(x, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuODY0NjY0N1xuIn0= -->
+<pre><code>[1] 0.8646647</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUSh4KSIsInFleHAocCwgcmF0ZSkiXX0= -->
+<pre class="r"><code># Q(x)
+qexp(p, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMzg2Mjk0XG4ifQ== -->
+<pre><code>[1] 1.386294</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEV4cG9uZW50aWFsIGRpc3RyaWJ1dGlvbiIsInJleHAobnVtYmVyX29ic2VydmF0aW9ucywgcmF0ZSkiXX0= -->
+<pre class="r"><code># generate number_observations numbers from the Exponential distribution
+rexp(number_observations, rate)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuNDc4ODY1MSAxLjczMjgyNzAgMS4wNDU3MDMyIDAuMTkzNTM2MCAwLjk0NjQyODFcbiJ9 -->
+<pre><code>[1] 1.4788651 1.7328270 1.0457032 0.1935360 0.9464281</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Нормално разпределение</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIm1lYW4gPC0gNSIsInN0YW5kYXJkX2RldmlhdGlvbiA8LSAyIiwieCA8LSA2IiwicCA8LSAwLjUiLCJudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDUiLCIiLCIjIGYoeCkiLCJkbm9ybSh4LCBtZWFuLCBzdGFuZGFyZF9kZXZpYXRpb24pIl19 -->
+<pre class="r"><code>mean &lt;- 5
+standard_deviation &lt;- 2
+x &lt;- 6
+p &lt;- 0.5
+number_observations &lt;- 5
+
+# f(x)
+dnorm(x, mean, standard_deviation)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMTc2MDMyN1xuIn0= -->
+<pre><code>[1] 0.1760327</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUChYIDw9IHgpIiwicG5vcm0oeCwgbWVhbiwgc3RhbmRhcmRfZGV2aWF0aW9uKSJdfQ== -->
+<pre class="r"><code># P(X &lt;= x)
+pnorm(x, mean, standard_deviation)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjkxNDYyNVxuIn0= -->
+<pre><code>[1] 0.6914625</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgUSh4KSIsInFub3JtKHAsIG1lYW4sIHN0YW5kYXJkX2RldmlhdGlvbikiXX0= -->
+<pre class="r"><code># Q(x)
+qnorm(p, mean, standard_deviation)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDVcbiJ9 -->
+<pre><code>[1] 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIE5vcm1hbCBkaXN0cmlidXRpb24iLCJybm9ybShudW1iZXJfb2JzZXJ2YXRpb25zLCBtZWFuLCBzdGFuZGFyZF9kZXZpYXRpb24pIl19 -->
+<pre class="r"><code># generate number_observations numbers from the Normal distribution
+rnorm(number_observations, mean, standard_deviation)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQuMDQxODM1IDYuMTQ3Mjk3IDEuNTEyMjM4IDcuMDczOTE1IDYuMDg2NDk4XG4ifQ== -->
+<pre><code>[1] 4.041835 6.147297 1.512238 7.073915 6.086498</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNoZWF0c2hlZXQiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyDQodC70YPRh9Cw0LnQvdC4INC10LrRgdC/0LXRgNC40LzQtdC90YLQuA0KDQoqKtCY0LfQsdC+0YAg0L3QsCDRgdC70YPRh9Cw0LnQvdC4INC10LvQtdC80LXQvdGC0Lgg0L7RgiDQstC10LrRgtC+0YAg0YEg0LLRgNGK0YnQsNC90LU6KioNCmBgYHtyfQ0KICAgIHNhbXBsZSh4PTE6NSwgc2l6ZT0zLCByZXBsYWNlPVQpDQpgYGANCg0KKirQmNC30LHQvtGAINC90LAg0YHQu9GD0YfQsNC50L3QuCDQtdC70LXQvNC10L3RgtC4INC+0YIg0LLQtdC60YLQvtGAINCx0LXQtyDQstGA0YrRidCw0L3QtToqKg0KYGBge3J9DQogICAgc2FtcGxlKHg9MTo1LCBzaXplPTMsIHJlcGxhY2U9RikNCmBgYA0KDQoqKtCT0LXQvdC10YDQuNGA0LDQvdC1INC90LAg0L/QtdGA0LzRg9GC0LDRhtC40Y86KioNCmBgYHtyfQ0KICAgIHggPC0gMTo1DQogICAgc2FtcGxlKHgsIGxlbmd0aCh4KSwgcmVwbGFjZT1GKQ0KYGBgDQoqKtCd0LDQvNC40YDQsNC90LUg0L3QsCDRh9C10YHRgtC+0YLQsCDQvdCwINGB0YrQsdC40YLQuNC1ICjQv9GA0LjQsdC70LjQt9C40YLQtdC70L3QsCDQstC10YDQvtGP0YLQvdC+0YHRgik6KioNCg0K0JIg0L7RgtC00LXQuyDQvdCwINGE0LjRgNC80LAg0YDQsNCx0L7RgtGP0YIgMjAg0YfQvtCy0LXQutCwLiDQl9CwINCa0L7Qu9C10LTQsCDRgtC1INGA0LXRiNCw0LLQsNGCINC00LAg0YHQuCDRgNCw0LfQvNC10L3Rj9GCDQrQv9C+0LTQsNGA0YrRhtC4LiDQkiDQutGD0YLQuNGPINGB0LvQsNCz0LDRgiAyMCDQu9C40YHRgtGH0LXRgtCwLCDQvdCwINCy0YHRj9C60L4g0L7RgiDQutC+0LjRgtC+INC40LzQsCDQtdC00L3QviDQuNC80LUuINCS0YHQtdC60Lgg0YLQtdCz0LvQuCDQu9C40YHRgtGH0LUNCijQsdC10Lcg0LTQsCDQs9C+INCy0YDRitGJ0LApINC4INC/0L7QtNCw0YDRj9Cy0LAg0L3QsCDRgtC+0LfQuCwg0YfQuNC10YLQviDQuNC80LUg0LUg0LjQt9GC0LXQs9C70LjQuy4g0JrQsNC60LLQsCDQtSDQstC10YDQvtGP0YLQvdC+0YHRgtGC0LAg0L/QvtC90LUNCtC10LTQuNC9INC00LAg0LjQt9GC0LXQs9C70Lgg0YHQstC+0LXRgtC+INC40LzQtT8NCg0KYGBge3J9DQpzaW0gPC0gZnVuY3Rpb24obnVtX3Blb3BsZSkgew0KICAgIHggPC0gc2FtcGxlKCAxOm51bV9wZW9wbGUsIG51bV9wZW9wbGUsIHJlcGxhY2U9RiApICMgcGVybXV0ZQ0KICAgIGQgPC0geCAtIDE6bnVtX3Blb3BsZSAjIGRpZmYgYmV0d2VlbiBwZXJzb25hbCBhbmQgcmVjZWl2ZWQgbnVtYmVyDQogICAgYW55KGQ9PTApICMgY2hlY2sgaWYgZm9yIGFueSB0aGVyZSBpcyBubyBkaWZmIGJldHdlZW4gdGhlIHR3byBudW1iZXJzDQp9DQoNCnByb2IgPC0gZnVuY3Rpb24odGltZXMsIG51bV9wZW9wbGUpIHsNCiAgICByZXN1bHQgPC0gcmVwbGljYXRlKHRpbWVzLCBzaW0obnVtX3Blb3BsZSkpDQogICAgc3VtKHJlc3VsdCkvbGVuZ3RoKHJlc3VsdCkNCn0NCg0KcHJvYigxMDAwMDAsIDIwKQ0KYGBgDQoqKtCj0YHQu9C+0LLQvdCwINCy0LXRgNC+0Y/RgtC90L7RgdGCOioqDQoNCtCY0LzQsNC80LUgMyDQutCw0YDRgtC4OiDQv9GK0YDQstCw0YLQsCDQtSDQsdGP0LvQsCDQvtGCINC00LLQtdGC0LUg0YHRgtGA0LDQvdC4LCDQstGC0L7RgNCw0YLQsCDQtSDRh9C10YDQvdCwINC+0YIg0LTQstC10YLQtQ0K0YHRgtGA0LDQvdC4LCDQsCDRgtGA0LXRgtCw0YLQsCDQtSDQsdGP0LvQsCDQvtGCINC10LTQvdCw0YLQsCDQuCDRh9C10YDQvdCwINC+0YIg0LTRgNGD0LPQsNGC0LAg0YHRgtGA0LDQvdCwLiDQktGB0Y/QutCwINC60LDRgNGC0LAg0LUg0L/QvtGB0YLQsNCy0LXQvdCwINCyDQrQt9Cw0YLQstC+0YDQtdC90LAg0LrRg9GC0LjRjy4g0JjQt9Cx0LjRgNCw0LzQtSDQv9GA0L7QuNC30LLQvtC70L3QsCDQutGD0YLQuNGPLCDQvtGC0LLQsNGA0Y/QvNC1INGPINC4INCy0LjQttC00LDQvNC1LCDRh9C1INCz0L7RgNC90LDRgtCwINGB0YLRgNCw0L3QsA0K0L3QsCDQutCw0YDRgtCw0YLQsCDQsiDQvdC10Y8g0LUg0LHRj9C70LAuINCa0LDQutCy0LAg0LUg0LLQtdGA0L7Rj9GC0L3QvtGB0YLRgtCwINC00YDRg9Cz0LDRgtCwINGB0YLRgNCw0L3QsCDQvdCwINC60LDRgNGC0LDRgtCwINGB0YrRidC+INC00LAg0LUg0LHRj9C70LA/DQoNCmBgYHtyfQ0Kc2ltIDwtIGZ1bmN0aW9uKCkgew0KICAgIGNhcmRzIDwtIHNhbXBsZShjKCJiYiIsICJ3dyIsICJidyIpLCAxKQ0KICAgIHNpZGUgPC0gc2FtcGxlKDE6MiwgMSApDQogICAgdXAgPC0gc3Vic3RyKGNhcmRzLCBzdGFydD1zaWRlLCBzdG9wPXNpZGUpDQogICAgYyh1cCwgY2FyZHMpDQp9DQoNCnByb2IgPC0gZnVuY3Rpb24odGltZXMpIHsNCiAgICByZXN1bHQgPC0gcmVwbGljYXRlKHRpbWVzLCBzaW0oKSkNCiAgICBzdW0ocmVzdWx0WzIsXT09Ind3IikgLyBzdW0ocmVzdWx0WzEsXT09InciKQ0KfQ0KDQpwcm9iKDEwMDAwMCkNCmBgYA0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNoZWF0c2hlZXQiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyDQodC70YPRh9Cw0LnQvdC4INC10LrRgdC/0LXRgNC40LzQtdC90YLQuA0KDQoqKtCY0LfQsdC+0YAg0L3QsCDRgdC70YPRh9Cw0LnQvdC4INC10LvQtdC80LXQvdGC0Lgg0L7RgiDQstC10LrRgtC+0YAg0YEg0LLRgNGK0YnQsNC90LU6KioNCmBgYHtyfQ0KICAgIHNhbXBsZSh4PTE6NSwgc2l6ZT0zLCByZXBsYWNlPVQpDQpgYGANCg0KKirQmNC30LHQvtGAINC90LAg0YHQu9GD0YfQsNC50L3QuCDQtdC70LXQvNC10L3RgtC4INC+0YIg0LLQtdC60YLQvtGAINCx0LXQtyDQstGA0YrRidCw0L3QtToqKg0KYGBge3J9DQogICAgc2FtcGxlKHg9MTo1LCBzaXplPTMsIHJlcGxhY2U9RikNCmBgYA0KDQoqKtCT0LXQvdC10YDQuNGA0LDQvdC1INC90LAg0L/QtdGA0LzRg9GC0LDRhtC40Y86KioNCmBgYHtyfQ0KICAgIHggPC0gMTo1DQogICAgc2FtcGxlKHgsIGxlbmd0aCh4KSwgcmVwbGFjZT1GKQ0KYGBgDQoqKtCd0LDQvNC40YDQsNC90LUg0L3QsCDRh9C10YHRgtC+0YLQsCDQvdCwINGB0YrQsdC40YLQuNC1ICjQv9GA0LjQsdC70LjQt9C40YLQtdC70L3QsCDQstC10YDQvtGP0YLQvdC+0YHRgik6KioNCg0K0JIg0L7RgtC00LXQuyDQvdCwINGE0LjRgNC80LAg0YDQsNCx0L7RgtGP0YIgMjAg0YfQvtCy0LXQutCwLiDQl9CwINCa0L7Qu9C10LTQsCDRgtC1INGA0LXRiNCw0LLQsNGCINC00LAg0YHQuCDRgNCw0LfQvNC10L3Rj9GCDQrQv9C+0LTQsNGA0YrRhtC4LiDQkiDQutGD0YLQuNGPINGB0LvQsNCz0LDRgiAyMCDQu9C40YHRgtGH0LXRgtCwLCDQvdCwINCy0YHRj9C60L4g0L7RgiDQutC+0LjRgtC+INC40LzQsCDQtdC00L3QviDQuNC80LUuINCS0YHQtdC60Lgg0YLQtdCz0LvQuCDQu9C40YHRgtGH0LUNCijQsdC10Lcg0LTQsCDQs9C+INCy0YDRitGJ0LApINC4INC/0L7QtNCw0YDRj9Cy0LAg0L3QsCDRgtC+0LfQuCwg0YfQuNC10YLQviDQuNC80LUg0LUg0LjQt9GC0LXQs9C70LjQuy4g0JrQsNC60LLQsCDQtSDQstC10YDQvtGP0YLQvdC+0YHRgtGC0LAg0L/QvtC90LUNCtC10LTQuNC9INC00LAg0LjQt9GC0LXQs9C70Lgg0YHQstC+0LXRgtC+INC40LzQtT8NCg0KYGBge3J9DQpzaW0gPC0gZnVuY3Rpb24obnVtX3Blb3BsZSkgew0KICAgIHggPC0gc2FtcGxlKCAxOm51bV9wZW9wbGUsIG51bV9wZW9wbGUsIHJlcGxhY2U9RiApICMgcGVybXV0ZQ0KICAgIGQgPC0geCAtIDE6bnVtX3Blb3BsZSAjIGRpZmYgYmV0d2VlbiBwZXJzb25hbCBhbmQgcmVjZWl2ZWQgbnVtYmVyDQogICAgYW55KGQ9PTApICMgY2hlY2sgaWYgZm9yIGFueSB0aGVyZSBpcyBubyBkaWZmIGJldHdlZW4gdGhlIHR3byBudW1iZXJzDQp9DQoNCnByb2IgPC0gZnVuY3Rpb24odGltZXMsIG51bV9wZW9wbGUpIHsNCiAgICByZXN1bHQgPC0gcmVwbGljYXRlKHRpbWVzLCBzaW0obnVtX3Blb3BsZSkpDQogICAgc3VtKHJlc3VsdCkvbGVuZ3RoKHJlc3VsdCkNCn0NCg0KcHJvYigxMDAwMDAsIDIwKQ0KYGBgDQoqKtCj0YHQu9C+0LLQvdCwINCy0LXRgNC+0Y/RgtC90L7RgdGCOioqDQoNCtCY0LzQsNC80LUgMyDQutCw0YDRgtC4OiDQv9GK0YDQstCw0YLQsCDQtSDQsdGP0LvQsCDQvtGCINC00LLQtdGC0LUg0YHRgtGA0LDQvdC4LCDQstGC0L7RgNCw0YLQsCDQtSDRh9C10YDQvdCwINC+0YIg0LTQstC10YLQtQ0K0YHRgtGA0LDQvdC4LCDQsCDRgtGA0LXRgtCw0YLQsCDQtSDQsdGP0LvQsCDQvtGCINC10LTQvdCw0YLQsCDQuCDRh9C10YDQvdCwINC+0YIg0LTRgNGD0LPQsNGC0LAg0YHRgtGA0LDQvdCwLiDQktGB0Y/QutCwINC60LDRgNGC0LAg0LUg0L/QvtGB0YLQsNCy0LXQvdCwINCyDQrQt9Cw0YLQstC+0YDQtdC90LAg0LrRg9GC0LjRjy4g0JjQt9Cx0LjRgNCw0LzQtSDQv9GA0L7QuNC30LLQvtC70L3QsCDQutGD0YLQuNGPLCDQvtGC0LLQsNGA0Y/QvNC1INGPINC4INCy0LjQttC00LDQvNC1LCDRh9C1INCz0L7RgNC90LDRgtCwINGB0YLRgNCw0L3QsA0K0L3QsCDQutCw0YDRgtCw0YLQsCDQsiDQvdC10Y8g0LUg0LHRj9C70LAuINCa0LDQutCy0LAg0LUg0LLQtdGA0L7Rj9GC0L3QvtGB0YLRgtCwINC00YDRg9Cz0LDRgtCwINGB0YLRgNCw0L3QsCDQvdCwINC60LDRgNGC0LDRgtCwINGB0YrRidC+INC00LAg0LUg0LHRj9C70LA/DQoNCmBgYHtyfQ0Kc2ltIDwtIGZ1bmN0aW9uKCkgew0KICAgIGNhcmRzIDwtIHNhbXBsZShjKCJiYiIsICJ3dyIsICJidyIpLCAxKQ0KICAgIHNpZGUgPC0gc2FtcGxlKDE6MiwgMSApDQogICAgdXAgPC0gc3Vic3RyKGNhcmRzLCBzdGFydD1zaWRlLCBzdG9wPXNpZGUpDQogICAgYyh1cCwgY2FyZHMpDQp9DQoNCnByb2IgPC0gZnVuY3Rpb24odGltZXMpIHsNCiAgICByZXN1bHQgPC0gcmVwbGljYXRlKHRpbWVzLCBzaW0oKSkNCiAgICBzdW0ocmVzdWx0WzIsXT09Ind3IikgLyBzdW0ocmVzdWx0WzEsXT09InciKQ0KfQ0KDQpwcm9iKDEwMDAwMCkNCmBgYA0KIyMg0KHQu9GD0YfQsNC50L3QuCDQstC10LvQuNGH0LjQvdC4DQoNCiMjIyDQlNC40YHQutGA0LXRgtC90Lgg0YHQu9GD0YfQsNC50L3QuCDQstC10LvQuNGH0LjQvdC4DQoNCioq0JHQtdGA0L3Rg9C70LjQtdCy0L4g0YDQsNC30L/RgNC10LTQtdC70LXQvdC40LUqKg0KDQpYIC0gKtCx0YDQvtC5INGD0YHQv9C10YXQuCoNCg0KYGBge3J9DQpzdWNjZXNzZXMgPC0gMTANCnRyaWVzIDwtIDIwDQpzdWNjZXNzX3Byb2JhYmlsaXR5IDwtIDAuNQ0KbnVtYmVyX29ic2VydmF0aW9ucyA8LSAxMA0KDQojIFAoWCA9IHN1Y2Nlc3NlcykNCmRiaW5vbShzdWNjZXNzZXMsIHRyaWVzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KQ0KDQojIFAoWCA8PSBzdWNjZXNzZXMpDQpwYmlub20oc3VjY2Vzc2VzLCB0cmllcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgQmlub21pYWwgZGlzdHJpYnV0aW9uDQpyYmlub20obnVtYmVyX29ic2VydmF0aW9ucywgdHJpZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpDQpgYGANCg0KKirQk9C10L7QvNC10YLRgNC40YfQvdC+INGA0LDQt9C/0YDQtdC00LXQu9C10L3QuNC1KioNCg0KWCAtICrQsdGA0L7QuSDQvtC/0LjRgtC4INC00L4g0YPRgdC/0LXRhSoNCg0KYGBge3J9DQp0cmllcyA8LSAyDQpzdWNjZXNzX3Byb2JhYmlsaXR5IDwtIDAuNQ0KbnVtYmVyX29ic2VydmF0aW9ucyA8LSAxMA0KDQojIFAoWCA9IHRyaWVzKQ0KZGdlb20odHJpZXMgLSAxLCBzdWNjZXNzX3Byb2JhYmlsaXR5KQ0KDQojIFAoWCA8PSB0cmllcykNCnBnZW9tKHRyaWVzIC0gMSwgc3VjY2Vzc19wcm9iYWJpbGl0eSkNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgR2VvbWV0cmljIGRpc3RyaWJ1dGlvbg0Kcmdlb20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc19wcm9iYWJpbGl0eSkgKyAxDQpgYGANCg0KWCAtICrQsdGA0L7QuSDQvdC10YPRgdC/0LXRhdC4INC/0YDQtdC00Lgg0L/RitGA0LLQuCDRg9GB0L/QtdGFKg0KDQpgYGB7cn0NCnRyaWVzIDwtIDINCnN1Y2Nlc3NfcHJvYmFiaWxpdHkgPC0gMC41DQpudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwDQoNCiMgUChYID0gdHJpZXMpDQpkZ2VvbSh0cmllcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkNCg0KIyBQKFggPD0gdHJpZXMpDQpwZ2VvbSh0cmllcywgc3VjY2Vzc19wcm9iYWJpbGl0eSkNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgR2VvbWV0cmljIGRpc3RyaWJ1dGlvbg0Kcmdlb20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc19wcm9iYWJpbGl0eSkNCmBgYA0KDQoqKtCe0YLRgNC40YbQsNGC0LXQu9C90L4g0LHQuNC90L7QvNC90L4g0YDQsNC30L/RgNC10LTQtdC70LXQvdC40LUqKg0KDQpYIC0gKtCx0YDQvtC5INC+0L/QuNGC0Lgg0L/RgNC10LTQuCByLdGC0Lgg0YPRgdC/0LXRhSDQstC60LvRjtGH0LjRgtC10LvQvdC+Kg0KDQpgYGB7cn0NCnN1Y2Nlc3NlcyA8LSAxMA0KdHJpZXMgPC0gMjANCnN1Y2Nlc3NfcHJvYmFiaWxpdHkgPC0gMC41DQpudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwDQoNCiMgUChYID0gdHJpZXMpDQpkbmJpbm9tKHRyaWVzIC0gc3VjY2Vzc2VzLCBzdWNjZXNzZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpDQoNCiMgUChYIDw9IHRyaWVzKQ0KcG5iaW5vbSh0cmllcyAtIHN1Y2Nlc3Nlcywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KQ0KDQojIGdlbmVyYXRlIG51bWJlcl9vYnNlcnZhdGlvbnMgbnVtYmVycyBmcm9tIHRoZSBOZWdhdGl2ZSBCaW5vbWlhbCBkaXN0cmlidXRpb24NCnJuYmlub20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KSArIHN1Y2Nlc3Nlcw0KYGBgDQoNClggLSAq0LHRgNC+0Lkg0L3QtdGD0YHQv9C10YXQuCDQv9GA0LXQtNC4IHIt0YLQuCDRg9GB0L/QtdGFKg0KDQpgYGB7cn0NCnN1Y2Nlc3NlcyA8LSAxMA0KZmFpbHVyZXMgPC0gMTANCnN1Y2Nlc3NfcHJvYmFiaWxpdHkgPC0gMC41DQpudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwDQoNCiMgUChYID0gZmFpbHVyZXMpDQpkbmJpbm9tKGZhaWx1cmVzLCBzdWNjZXNzZXMsIHN1Y2Nlc3NfcHJvYmFiaWxpdHkpDQoNCiMgUChYIDw9IHRyaWVzKQ0KcG5iaW5vbShmYWlsdXJlcywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KQ0KDQojIGdlbmVyYXRlIG51bWJlcl9vYnNlcnZhdGlvbnMgbnVtYmVycyBmcm9tIHRoZSBOZWdhdGl2ZSBCaW5vbWlhbCBkaXN0cmlidXRpb24NCnJuYmlub20obnVtYmVyX29ic2VydmF0aW9ucywgc3VjY2Vzc2VzLCBzdWNjZXNzX3Byb2JhYmlsaXR5KQ0KYGBgDQoNCioq0KXQuNC/0LXRgNCz0LXQvtC80LXRgtGA0LjRh9C90L4g0YDQtdC30L/RgNC10LTQtdC70LXQvdC40LUqKg0KDQpOIC0gKtC+0LHRiSDQsdGA0L7QuSDRgtC+0L/QutC4Kg0KDQpNIC0gKtCx0YDQvtC5INCx0LXQu9C4INGC0L7Qv9C60LgqDQoNClggLSAq0LHRgNC+0Lkg0LjQt9Cy0LDQtNC10L3QuCDQsdC10LvQuCDRgtC+0L/QutC4ICjQv9GA0Lgg0LjQt9Cy0LDQtNC10L3QuCBMINCx0LXQtyDQstGA0YrRidCw0L3QtSkqDQoNCmBgYHtyfQ0KY2hvc2VuX3doaXRlIDwtIDUNCndoaXRlIDwtIDEwDQphbGwgPC0gMjANCnRyaWVzIDwtIDEwDQpudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDEwDQoNCiMgUChYID0gY2hvc2VuX3doaXRlKQ0KZGh5cGVyKGNob3Nlbl93aGl0ZSwgd2hpdGUsIGFsbCAtIHdoaXRlLCB0cmllcykNCg0KIyBQKFggPD0gY2hvc2VuX3doaXRlKQ0KcGh5cGVyKGNob3Nlbl93aGl0ZSwgd2hpdGUsIGFsbCAtIHdoaXRlLCB0cmllcykNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgSHlwZXJnZW9tZXRyaWMgZGlzdHJpYnV0aW9uDQpyaHlwZXIobnVtYmVyX29ic2VydmF0aW9ucywgd2hpdGUsIGFsbCAtIHdoaXRlLCB0cmllcykNCmBgYA0KDQoqKtCf0L7QsNGB0L7QvdC+0LLQviDRgNCw0LfQv9GA0LXQtNC10LvQtdC90LjQtSoqDQoNClggLSAqKtCx0YDQvtC5INGB0LvRg9GH0LLQsNC90LjRjyDQvdCwINGB0YrQsdC40YLQuNC10YLQvioqDQoNCmBgYHtyfQ0Kb2NjdXJlbmNlcyA8LSAxDQpyYXRlIDwtIDAuNg0KbnVtYmVyX29ic2VydmF0aW9ucyA8LSAxMA0KDQojIFAoWCA9IG9jY3VyZW5jZXMpDQpkcG9pcyhvY2N1cmVuY2VzLCByYXRlKQ0KDQojIFAoWCA8PSBvY2N1cmVuY2VzKQ0KcHBvaXMob2NjdXJlbmNlcywgcmF0ZSkNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgUG9pc3NvbiBkaXN0cmlidXRpb24NCnJwb2lzKG51bWJlcl9vYnNlcnZhdGlvbnMsIHJhdGUpDQpgYGANCg0KIyMjINCd0LXQv9GA0LXQutGK0YHQvdCw0YLQuCDRgdC70YPRh9Cw0LnQvdC4INCy0LXQu9C40YfQuNC90LgNCg0KKirQoNCw0LLQvdC+0LzQtdGA0L3QviDRgNCw0LfQv9GA0LXQtNC10LvQtdC90LjQtSoqDQoNCg0KYGBge3J9DQptaW4gPC0gMA0KbWF4IDwtIDEwDQp4IDwtIDQNCnAgPC0gMC41DQpudW1iZXJfb2JzZXJ2YXRpb25zIDwtIDUNCg0KIyBmKHgpDQpkdW5pZih4LCBtaW4sIG1heCkNCg0KIyBQKFggPD0geCkNCnB1bmlmKHgsIG1pbiwgbWF4KQ0KDQojIFEoeCkNCnF1bmlmKHAsIG1pbiwgbWF4KQ0KDQojIGdlbmVyYXRlIG51bWJlcl9vYnNlcnZhdGlvbnMgbnVtYmVycyBmcm9tIHRoZSBVbmlmb3JtIGRpc3RyaWJ1dGlvbg0KcnVuaWYobnVtYmVyX29ic2VydmF0aW9ucywgbWluLCBtYXgpDQpgYGANCioq0JXQutGB0L/QvtC90LXQvdGG0LjQsNC70L3QviDRgNCw0LfQv9GA0LXQtNC10LvQtdC90LjQtSoqDQoNCg0K0JIg0YLQtdC+0YDQuNGP0YLQsCDQvdCwINCy0LXRgNC+0Y/RgtC90L7RgdGC0LjRgtC1INC4INGB0YLQsNGC0LjRgdGC0LjQutCw0YLQsCwg0LXQutGB0L/QvtC90LXQvdGG0LjQsNC70L3QvtGC0L4g0YDQsNC30L/RgNC10LTQtdC70LXQvdC40LUg0YDQsNC30L/RgNC10LTQtdC70LXQvdC40LUg0L3QsCDQstGA0LXQvNC10YLQviDQvNC10LbQtNGDINGB0YrQsdC40YLQuNGP0YLQsCDQsiDQv9GA0L7RhtC10YEg0L3QsCDRgtC+0YfQutCwINC90LAg0J/QvtCw0YHQvtC9LCDRgi7QtS4g0L/RgNC+0YbQtdGBLCDQv9GA0Lgg0LrQvtC50YLQviAqKtGB0YrQsdC40YLQuNGP0YLQsCDRgdC1INGB0LvRg9GH0LLQsNGCINC90LXQv9GA0LXQutGK0YHQvdCw0YLQviDQuCDQvdC10LfQsNCy0LjRgdC40LzQvioqINGBINC/0L7RgdGC0L7Rj9C90L3QsCDRgdGA0LXQtNC90LAg0YHQutC+0YDQvtGB0YIuDQoNCmBgYHtyfQ0KcmF0ZSA8LSAwLjUNCnggPC0gNA0KcCA8LSAwLjUNCm51bWJlcl9vYnNlcnZhdGlvbnMgPC0gNQ0KDQojIGYoeCkNCmRleHAoeCwgcmF0ZSkNCg0KIyBQKFggPD0geCkNCnBleHAoeCwgcmF0ZSkNCg0KIyBRKHgpDQpxZXhwKHAsIHJhdGUpDQoNCiMgZ2VuZXJhdGUgbnVtYmVyX29ic2VydmF0aW9ucyBudW1iZXJzIGZyb20gdGhlIEV4cG9uZW50aWFsIGRpc3RyaWJ1dGlvbg0KcmV4cChudW1iZXJfb2JzZXJ2YXRpb25zLCByYXRlKQ0KYGBgDQoNCioq0J3QvtGA0LzQsNC70L3QviDRgNCw0LfQv9GA0LXQtNC10LvQtdC90LjQtSoqDQoNCmBgYHtyfQ0KbWVhbiA8LSA1DQpzdGFuZGFyZF9kZXZpYXRpb24gPC0gMg0KeCA8LSA2DQpwIDwtIDAuNQ0KbnVtYmVyX29ic2VydmF0aW9ucyA8LSA1DQoNCiMgZih4KQ0KZG5vcm0oeCwgbWVhbiwgc3RhbmRhcmRfZGV2aWF0aW9uKQ0KDQojIFAoWCA8PSB4KQ0KcG5vcm0oeCwgbWVhbiwgc3RhbmRhcmRfZGV2aWF0aW9uKQ0KDQojIFEoeCkNCnFub3JtKHAsIG1lYW4sIHN0YW5kYXJkX2RldmlhdGlvbikNCg0KIyBnZW5lcmF0ZSBudW1iZXJfb2JzZXJ2YXRpb25zIG51bWJlcnMgZnJvbSB0aGUgTm9ybWFsIGRpc3RyaWJ1dGlvbg0Kcm5vcm0obnVtYmVyX29ic2VydmF0aW9ucywgbWVhbiwgc3RhbmRhcmRfZGV2aWF0aW9uKQ0KYGBgDQoNCg==</div>
 
 
 
