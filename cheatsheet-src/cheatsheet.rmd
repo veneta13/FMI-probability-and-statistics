@@ -348,3 +348,33 @@ stem(wait, scale=2)
 
 
 ```
+
+## Числови характеристики на данните
+```{r}
+x <- airquality$Temp
+
+# средно
+mean(x)
+
+# медиана
+median(x)
+
+# стандартно отклонение
+sd(x)
+
+# p-квантил
+quantile(x, p)
+
+# Q1
+quantile(x, 0.25)
+# Q3
+quantile(x, 0.75)
+
+# IQR = Q3 - Q1
+IQR(x)
+
+summary(x)
+
+boxplot(x, horizontal=T)
+```
+
