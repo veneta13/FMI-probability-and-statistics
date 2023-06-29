@@ -378,3 +378,94 @@ summary(x)
 boxplot(x, horizontal=T)
 ```
 
+## Многомерни данни
+
+```{r}
+library(MASS)
+?survey
+str(survey)
+
+# извежда данните като таблица
+# fix(survey)
+
+summary(survey)
+
+# equilavnt notations
+survey[, 'Age']
+survey$Age
+
+# 12-та колона
+survey[ ,12]
+
+# 5-ти ред
+survey[5, ]
+```
+**Крос-таблица**
+```{r}
+attach(survey)
+
+table(Smoke, W.Hnd)
+
+# премахване на липсващите наблюдения
+table(Smoke, W.Hnd, useNA="no")
+```
+
+**Сравняване на таблици**
+```{r}
+# таблица с относителния дял
+prop.table(table(Smoke, W.Hnd))
+
+# таблица с редови проценти
+prop.table(table(Smoke, W.Hnd), 1)
+
+# таблица с колонни проценти
+prop.table(table(Smoke, W.Hnd), 2)
+
+barplot(
+    table(Smoke, W.Hnd),
+    legend=T,
+    args.legend=list(
+        x="topleft",
+        inset=0.05
+    )
+)
+barplot(
+    table(W.Hnd, Smoke),
+    beside=T,
+    legend=T,
+    args.legend=list(
+        x="topright",
+        inset=0.05
+    )
+)
+```
+
+**Сравняване на стойности на категорийни променливи и корелация**
+
+Ако данните са близо до "възходяща" права линия, то корелацията им е близко до 1. Това показва, че те "растат" *заедно*.
+
+Ако данните са близо до "низходяща" права линия, то корелацията им е близко до -1. Това показва, че те "растат" *противоположно*.
+
+Ако корелацията им е близо до 0, то не наблюдаваме тенденции на линейна зависимост между тях.
+
+```{r}
+# кутуя с мустаци
+boxplot(Pulse ~ Smoke)
+
+# лентова диаграма
+stripchart(Pulse ~ Smoke, vertical=T)
+
+# точкова диаграма
+plot(Height, Pulse)
+cor(Height, Pulse, use="complete.obs")
+
+plot(Wr.Hnd, Height)
+cor(Wr.Hnd, Height, use="complete.obs")
+
+plot(Wr.Hnd, NW.Hnd)
+cor(Wr.Hnd, NW.Hnd, use="complete.obs")
+
+# преобразуваме данните, за да получим отрицателна корелация
+plot(Wr.Hnd, -1 * NW.Hnd)
+cor(Wr.Hnd, -1 * NW.Hnd, use="complete.obs")
+```
